@@ -7,6 +7,7 @@ struct ListNode {
      ListNode *next;
      ListNode(int x) : val(x), next(NULL) {} //构造函数初始值列表
 };
+
 /*start*/
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
     ListNode* p3 = new ListNode(0);     //new动态分配和初始化对象
@@ -72,6 +73,7 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
     return l3;
 }
 /*end*/
+
 int main() {
     ListNode* l1= new ListNode(2);
     ListNode* node1 = new ListNode(4);
