@@ -1,65 +1,96 @@
+#include <iostream>
+
+using namespace std;
+
+struct ListNode {
+     int val;
+     ListNode *next;
+     ListNode(int x) : val(x), next(NULL) {}
+};
+
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-    ListNode* p1 = l1;
-    ListNode* p2 = l2;
     ListNode* p3 = new ListNode(0);
     ListNode* l3 = p3;
     int flag(0);
     int i(0);
 
-    while (p1 != NULL && p2 != NULL) {
-        i = p1->val + p2->val + flag;
+    while (l1 != NULL && l2 != NULL) {
+        i = l1->val + l2->val + flag;
         if(i < 10){
             ListNode* node = new ListNode(i);
             p3->next = node;
-            flag = 0; 
+            flag = 0;
         }else{
             ListNode* node = new ListNode(i % 10);
             p3->next = node;
-            flag = i / 10; 
+            flag = i / 10;
         }
-        p1 = p1->next;
-        p2 = p2->next;
-        p3 = p3->next; 
+        l1 = l1->next;
+        l2 = l2->next;
+        p3 = p3->next;
     }
-    if(p1 != NULL && p2 == NULL){
-        while(p1 != NULL) {
-            i = p1->val + flag;
+    if(l1 != NULL && l2 == NULL){
+        while(l1 != NULL) {
+            i = l1->val + flag;
             if (i < 10) {
                 ListNode *node = new ListNode(i);
                 p3->next = node;
-                flag = 0; 
+                flag = 0;
             } else {
                 ListNode *node = new ListNode(i % 10);
                 p3->next = node;
-                flag = i / 10; 
+                flag = i / 10;
             }
-            p1 = p1->next;
-            p3 = p3->next; 
+            l1 = l1->next;
+            p3 = p3->next;
         }
     }
-    if(p1 == NULL && p2 != NULL){
-        while(p2 != NULL) {
-            i = p2->val + flag;
+    if(l1 == NULL && l2 != NULL){
+        while(l2 != NULL) {
+            i = l2->val + flag;
             if (i < 10) {
                 ListNode *node = new ListNode(i);
                 p3->next = node;
-                flag = 0; 
+                flag = 0;
             } else {
                 ListNode *node = new ListNode(i % 10);
                 p3->next = node;
-                flag = i / 10; 
+                flag = i / 10;
             }
-            p2 = p2->next;
-            p3 = p3->next; 
+            l2 = l2->next;
+            p3 = p3->next;
         }
     }
     if(flag != 0){
         ListNode *node = new ListNode(flag);
         p3->next = node;
-        flag = 0; 
+        flag = 0;
     }
     ListNode* firstNode = l3;
     l3 = l3->next;
     free(firstNode);
-    return l3; 
+    return l3;
+}
+
+int main() {
+    ListNode* l1= new ListNode(2);
+    ListNode* node1 = new ListNode(4);
+    l1->next = node1;
+    ListNode* node2 = new ListNode(3);
+    node1->next = node2;
+
+    ListNode* l2 = new ListNode(5);
+    ListNode* node3 = new ListNode(6);
+    l2->next = node3;
+    ListNode* node4 = new ListNode(4);
+    node3->next = node4;
+
+    ListNode* l3 = addTwoNumbers(l1, l2);
+    ListNode* p = l3;
+
+    while (p != NULL) {
+        cout << p->val << ' ';
+        p = p->next;
+    }
+    return 0;
 }
