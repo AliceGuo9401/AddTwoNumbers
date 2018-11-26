@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 struct ListNode {
@@ -7,7 +6,6 @@ struct ListNode {
      ListNode *next;
      ListNode(int x) : val(x), next(NULL) {} //构造函数初始值列表
 };
-
 /*start*/
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
     ListNode* p3 = new ListNode(0);     //new动态分配和初始化对象
@@ -24,7 +22,7 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         }else{
             ListNode* node = new ListNode(i % 10);
             p3->next = node;
-            flag = i / 10;
+            flag = i / 10;    /**/
         }
         l1 = l1->next;
         l2 = l2->next;
@@ -40,7 +38,7 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
             } else {
                 ListNode *node = new ListNode(i % 10);
                 p3->next = node;
-                flag = i / 10;
+                flag = i / 10;     /**/
             }
             l1 = l1->next;
             p3 = p3->next;
@@ -56,7 +54,7 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
             } else {
                 ListNode *node = new ListNode(i % 10);
                 p3->next = node;
-                flag = i / 10;
+                flag = i / 10;     /**/
             }
             l2 = l2->next;
             p3 = p3->next;
@@ -73,7 +71,6 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
     return l3;
 }
 /*end*/
-
 int main() {
     ListNode* l1= new ListNode(2);
     ListNode* node1 = new ListNode(4);
